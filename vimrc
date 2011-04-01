@@ -12,9 +12,9 @@ set encoding=utf-8
 
 " Whitespace stuff
 set nowrap
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set list listchars=tab:\ \ ,trail:·
 
@@ -70,24 +70,10 @@ endfunction
 " make uses real tabs
 au FileType make                                     set noexpandtab
 
-" neocomplcache stuff
-let g:neocomplcache_enable_at_startup = 1
-
 " Actionsctipt files
 " au BufNewFile,BufRead *.as set ft=actionscript
-au BufNewFile,BufRead *.mxml set ft=mxml 
+au BufNewFile,BufRead *.mxml set ft=mxml.actionscript
 au BufNewFile,BufRead *.as set ft=actionscript
-
-" pydiction settings
-au BufNewFile,BufRead *.py set ft=python
-let g:pydiction_location = 'bundle/pydiction/complete-dict'
-
-" Haskell files
-au BufEnter *.hs compiler ghc
-au BufNewFile,BufRead *.hs set ft=haskell
-" Configure browser for haskell_doc.vim
-  let g:haddock_browser = "open"
-  let g:haddock_browser_callformat = "%s %s"
 
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
@@ -160,6 +146,6 @@ let macvim_hig_shift_movement = 1
 runtime! macros/matchit.vim
 
 " Include user's local vim config
-if filereadable(expand("~/.gvimrc.local"))
-  source ~/.gvimrc.local
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
 endif
