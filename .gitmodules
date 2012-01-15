@@ -27,7 +27,7 @@
 	url = git://github.com/hallettj/jslint.vim.git
 [submodule "bundle/markdown_preview"]
 	path = bundle/markdown_preview
-	url = git://github.com/robgleeson/vim-markdown-preview.git
+	url = git://github.com/swaroopch/vim-markdown-preview.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = git://github.com/wycats/nerdtree.git

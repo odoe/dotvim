@@ -1,11 +1,22 @@
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
 set nocompatible
 
+runtime! autoload/pathogen.vim
+silent! call pathogen#runtime_append_all_bundles()
+silent! call pathogen#helptags()
+
+" load the plugin and indent settings for the detected filetype
+filetype plugin indent on
+
 set number
-set ruler
 syntax on
+
+	if has('cmdline_info')
+		set ruler                  	" show the ruler
+		set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
+		set showcmd                	" show partial commands in status line and
+									" selected characters/lines in visual mode
+	endif
+
 
 " Set encoding
 set encoding=utf-8
@@ -37,8 +48,11 @@ set laststatus=2
 set noequalalways
 
 " NERDTree configuration
-let NERDTreeIgnore=['\.rbc$', '\~$']
-map <Leader>n :NERDTreeToggle<CR>
+"let NERDTreeIgnore=['\.rbc$', '\~$']
+"map <Leader>n :NERDTreeToggle<CR>
+
+" CoffeeScript autocompile
+autocmd BufWritePost,FileWritePost *.coffee :silent !coffee -c <afile>
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
@@ -70,6 +84,9 @@ endfunction
 " make uses real tabs
 au FileType make                                     set noexpandtab
 
+" CoffeeScript plugin
+au BufWritePost *.coffee silent CoffeeMake!
+
 " Actionsctipt files
 " au BufNewFile,BufRead *.as set ft=actionscript
 au BufNewFile,BufRead *.mxml set ft=mxml.actionscript
@@ -88,9 +105,6 @@ au FileType python  set tabstop=4 textwidth=79
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-
-" load the plugin and indent settings for the detected filetype
-filetype plugin indent on
 
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
