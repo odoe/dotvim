@@ -1,8 +1,10 @@
 set nocompatible
 
-runtime! autoload/pathogen.vim
-silent! call pathogen#runtime_append_all_bundles()
-silent! call pathogen#helptags()
+"runtime! autoload/pathogen.vim
+"silent! call pathogen#runtime_append_all_bundles()
+"silent! call pathogen#helptags()
+
+call pathogen#infect()
 
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
@@ -54,6 +56,10 @@ set noequalalways
 " CoffeeScript autocompile
 autocmd BufWritePost,FileWritePost *.coffee :silent !coffee -c <afile>
 
+" Jasmine BDD key bindings
+let mapleader=","
+map <leader>m :wa \|! jasmine-node spec --noColor <CR>
+
 " Command-T configuration
 let g:CommandTMaxHeight=20
 
@@ -85,7 +91,9 @@ endfunction
 au FileType make                                     set noexpandtab
 
 " CoffeeScript plugin
-au BufWritePost *.coffee silent CoffeeMake!
+"au BufWritePost,FileWritePost *.coffee silent CoffeeMake! -c
+au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 " Actionsctipt files
 " au BufNewFile,BufRead *.as set ft=actionscript
