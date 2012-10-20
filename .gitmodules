@@ -1,9 +1,6 @@
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = git://github.com/mileszs/ack.vim.git
-[submodule "bundle/color-sampler"]
-	path = bundle/color-sampler
-	url = git://github.com/vim-scripts/Color-Sampler-Pack.git
 [submodule "bundle/conque"]
 	path = bundle/conque
 	url = git://github.com/rson/vim-conque.git
